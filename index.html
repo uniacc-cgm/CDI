@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAVDA • Términos de Referencia (TR)</title>
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (CDN para desarrollo) -->
+    <!-- Nota de Arquitectura: Para el paso a producción final, se recomienda reemplazar este script por el archivo CSS compilado vía Vite o PostCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
+                    colors: { 
+                        davda: { primary: '#2c66ff', bg: '#f5f5f5', dark: '#3d3838', grafito: '#3d3838', amarillo: '#ffa500', magenta: '#ff01ff' } 
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Archivos externos -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()" aria-hidden="true"></div>
+
+    <div class="flex flex-1 overflow-hidden">
+        
+        <aside id="mainSidebar" class="w-72 bg-davda-dark text-white flex flex-col z-20 shadow-2xl shrink-0 relative transition-all duration-300">
+            <button onclick="toggleSidebar()" class="lg:hidden absolute top-4 right-4 text-white/50 hover:text-white p-2 text-xl transition-colors" aria-label="Cerrar menú lateral">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            
+            <div class="p-8 border-b border-white/5 flex flex-col items-center text-center">
+                <img src="img/uniacc_logo.png" alt="Logotipo institucional de UNIACC" class="w-3/4 max-w-[150px] object-contain mb-6 bg-white/10 p-2.5 rounded-lg shadow-sm">
+                
+                <h1 class="text-sm font-extrabold leading-tight tracking-tight uppercase">
+                    DAVDA <br><span class="text-davda-primary font-medium normal-case">Términos de Referencia</span>
+                </h1>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto p-4 space-y-1 custom-scrollbar" aria-label="Navegación principal de unidades">
+                <button onclick="scrollToSection('unidad-0', this)" class="nav-link active-filter" data-target="unidad-0">01 Unidad 0</button>
+                <button onclick="scrollToSection('unidades-programa', this)" class="nav-link" data-target="unidades-programa">02 Unidades en el programa</button>
+                <button onclick="scrollToSection('recursos', this)" class="nav-link" data-target="recursos">03 Recursos</button>
+                <button onclick="scrollToSection('evaluacion-diagnostica', this)" class="nav-link" data-target="evaluacion-diagnostica">04 Ev. Diagnóstica</button>
+                <button onclick="scrollToSection('evaluacion-formativa', this)" class="nav-link" data-target="evaluacion-formativa">05 Ev. Formativa</button>
+                <button onclick="scrollToSection('evaluacion-sumativa', this)" class="nav-link" data-target="evaluacion-sumativa">06 Ev. Sumativa</button>
+                <button onclick="scrollToSection('instrumentos-calificacion', this)" class="nav-link" data-target="instrumentos-calificacion">07 Calificación</button>
+                <button onclick="scrollToSection('unidad-cierre', this)" class="nav-link" data-target="unidad-cierre">08 Unidad de Cierre</button>
+                
+                <div class="h-px bg-white/5 my-4" aria-hidden="true"></div>
+                
+                <button onclick="scrollToSection('configuraciones-generales', this)" class="nav-link" data-target="configuraciones-generales"><i class="fas fa-sliders-h mr-3" aria-hidden="true"></i> Configuraciones</button>
+                <button onclick="scrollToSection('manuales', this)" class="nav-link" data-target="manuales"><i class="fas fa-book-open mr-3" aria-hidden="true"></i> Manuales</button>
+                <button onclick="scrollToSection('recursos-graficos', this)" class="nav-link" data-target="recursos-graficos"><i class="fas fa-photo-video mr-3" aria-hidden="true"></i> Recursos gráficos</button>
+            </nav>
+
+            <div class="p-6 border-t border-white/5 text-center">
+                <span class="bg-davda-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-md tracking-wider uppercase inline-block mb-2">Repositorio oficial</span>
+                <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Última edición:<br><span style="color: #F5F5F5;">21 de julio, 2026</span></p>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col bg-davda-bg h-screen relative">
+            <header class="h-20 md:h-24 flex items-center justify-between px-6 lg:px-10 bg-white border-b border-gray-200 shadow-sm z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="flex items-center gap-2 bg-gray-100 border border-gray-200 text-davda-dark hover:bg-gray-200 shadow-sm px-4 py-2.5 rounded-lg transition-colors font-bold text-xs" aria-label="Abrir menú lateral">
+                        <i class="fas fa-bars text-sm" aria-hidden="true"></i> <span class="hidden sm:inline-block">Menú</span>
+                    </button>
+                    <div>
+                        <h1 class="text-base font-black tracking-tight text-davda-dark hidden md:block">DAVDA • Términos de Referencia (TR)</h1>
+                        <p class="text-xs text-gray-500 font-medium mt-0.5 hidden md:block">para la construcción de asignaturas de modalidades online y semipresencial</p>
+                        <h1 class="text-sm font-black tracking-tight text-davda-dark block md:hidden">TR Asignaturas</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 scroll-smooth relative" id="mainScrollArea">
+                <div class="max-w-7xl mx-auto space-y-20 pb-10">
+
+                    <section id="unidad-0" class="scroll-mt-6">
+                        <div class="bg-davda-dark text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-flag text-davda-primary" aria-hidden="true"></i> Unidad 0 = Presentación</h2>
+                            <button onclick="copySectionLink('unidad-0')" class="btn-share-section" aria-label="Copiar enlace de Unidad 0"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-plan-asignatura">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Documento</span>
+                                    <img src="img/u0_1.png" alt="Vista previa del documento del plan de la asignatura" class="thumb-img cover-top-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U0 • Item 01</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Plan de la asignatura</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1E0ywhOHt8CC5BzZhghhSlplxAJO0AGBvbwEITY2Ui70/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-primary"><i class="fas fa-file-code" aria-hidden="true"></i> CODIGO_PLAN_U0</a>
+                                            <a href="https://docs.google.com/document/d/1uTBM8wu4glf5_2f3RhKhR9gCSVu23z0aHBNEQLIWotw/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-dark"><i class="fas fa-clipboard-list" aria-hidden="true"></i> PLAN_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/1Bm2OOl7_6h6_jMzevvYGUh8yMuevkpG0QRHdnKrqi1U/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver documento editable"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://drive.google.com/file/d/1olmm2e03igPisM0jVwLVh69PKD0DXGhi/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver documento funcional"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=QY93qRXycB4" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-presentacion-asignatura">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Interactivo</span>
+                                    <img src="img/u0_2.png" alt="Captura de pantalla de la presentación interactiva de la asignatura" class="thumb-img cover-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U0 • Item 02</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Presentación de la asignatura</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1ZFoF8MSUjESx9eyHhHn1-56rb6VeMCTXnz0ciQKmFRY/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-primary"><i class="fas fa-file-code" aria-hidden="true"></i> CODIGO_PRESENTACION_U0</a>
+                                            <a href="https://docs.google.com/document/d/1FqCXMiQMFgPigq2hcNnPv-kD-Amsj72dCagrqcHx4c8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-dark"><i class="fas fa-clipboard-list" aria-hidden="true"></i> PRESENTACION_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/1GBQwe0lSKroPj0uGgY1Y_tiOLYZmsdQBIwlagyweQvM/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver presentación editable"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://view.genially.com/69a9d358a4be7d32687ddea5" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver presentación funcional"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=R05pe6bEpdY" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-orientaciones-docencia">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Documento</span>
+                                    <img src="img/u0_3.png" alt="Vista previa del documento de orientaciones para la docencia" class="thumb-img cover-top-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U0 • Item 03</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Orientaciones para la docencia</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/10V7Kaw9PtqtgoWMW-8Xw_SKlRZrcOUsORusJ5cFU1Ps/edit?usp=share_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary"><i class="fas fa-file-code" aria-hidden="true"></i> CODIGO_ORIENTACIONES_U0</a>
+                                            <a href="https://docs.google.com/document/d/1aOvQ10_-2Bg87xz6q7vjrb2dBbi_2hRoGz9eWP0H7CE/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-dark"><i class="fas fa-clipboard-list" aria-hidden="true"></i> ORIENTACIONES_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/1yfURSXffGdmQ2Dp1R7ZpJXGRUuSx1lK1CQF3_PMRVYY/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver documento editable"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://drive.google.com/file/d/1KTB5KrhAEeeyyaRZY2mHaSxc_-iBR1cf/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver documento funcional"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=gUu6tomYpv4" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="unidades-programa" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-cubes" aria-hidden="true"></i> Unidades en el programa</h2>
+                            <button onclick="copySectionLink('unidades-programa')" class="btn-share-section" aria-label="Copiar enlace de Unidades en el programa"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="w-full">
+                            <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs card-asset transition-all flex flex-col md:flex-row justify-between items-stretch">
+                                <div class="flex flex-col md:flex-row flex-1 items-stretch">
+                                    <div class="bg-slate-50 w-full md:w-80 lg:w-[400px] aspect-video md:aspect-auto md:h-full flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-200 shrink-0 relative overflow-hidden" id="img-presentacion-unidad">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Interactivo</span>
+                                        <img src="img/up_1.png" alt="Captura de interfaz de presentación de unidad" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="p-6 flex items-center">
+                                        <div>
+                                            <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 01</span>
+                                            <h3 class="font-bold text-davda-dark text-lg tracking-tight">Presentación unidad</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-6 bg-slate-50/50 md:border-l border-slate-100 flex flex-col justify-center space-y-3 min-w-xs md:w-80">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <a href="https://docs.google.com/document/d/1JdffjFkUjYnWKTlCY0g3NqVwHAJvC4yox4GHfAR-cLw/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_PRESENTACION_UX</a>
+                                        <button class="btn-action-dark" onclick="return false;">Los mismos de la presentación general</button>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 border-t border-slate-200/60 pt-2.5">
+                                        <a href="https://view.genially.com/69af2155387152a54546b0d7" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver diseño editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>Editable</span></a>
+                                        <a href="https://view.genially.com/69c6b6b6e32a4efc92d4e657" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver recurso funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>Funcional</span></a>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=C65oMoYrQ50" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="recursos" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-book" aria-hidden="true"></i> Recursos</h2>
+                            <button onclick="copySectionLink('recursos')" class="btn-share-section" aria-label="Copiar enlace de Recursos"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-recurso-apuntes">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Documento</span>
+                                    <img src="img/re_1.png" alt="Previsualización del formato de apuntes" class="thumb-img cover-top-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 02</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Apuntes</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1Ec-qmCa42ehf3efAV5wm0sH4UaUnZYWk5oceKSV7Mco/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_APUNTE_UX</a>
+                                            <a href="https://docs.google.com/document/d/1U_Qz-IqoURhJ_Vu46ZIYNSljZaSbTpaa55gR0gabX8Y/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">APUNTES_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/1i2C7JLC1o8CgP1gr5u-830lyUvZyrmpnUeRltJviRr0/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver plantilla editable"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://drive.google.com/file/d/1s-7cvkoT4i8fjrg1RHu1ZahVrfYufeLN/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver apuntes funcionales"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=_w5AuV_BqGI" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-recurso-videos">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Video</span>
+                                    <img src="img/re_2.png" alt="Miniatura de recurso audiovisual" class="thumb-img cover-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 03</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Videos</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/presentation/d/1I7_YgqI21kGbaeqO2sSb9vEb_iWaiKjUPDmm9VUVbLM/edit?slide=id.p1" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_VIDEO_UX</a>
+                                            <a href="https://docs.google.com/document/d/1Ai0T2nVvtQC1iPZhQvqNNJeBoAHN_czd0YqrrS112nA/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">VIDEOS_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/presentation/d/14atv1_TNFG4NOV1gjRk3p21RhURDrZDg/edit?slide=id.p1" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver archivos editables"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://www.youtube.com/watch?v=X083qCvl-9M" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver video final"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=M2AgMrYSim8" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-recurso-interactivos">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Interactivo</span>
+                                    <img src="img/re_3.png" alt="Pantalla de recurso multimedia interactivo" class="thumb-img cover-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 04</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Interactivos</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/presentation/d/1IQt4BeTiLXFRAOTxDsMjtAhSFY-hA_SVYdffcGYrCOU/edit?slide=id.p1" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_INTERACTIVO_UX</a>
+                                            <a href="https://docs.google.com/document/d/1Uy7XhpEGpAjdkjOyDfcJXbPIgB1brm31dyKw-wV0Kl0/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">INTERACTIVOS_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/presentation/d/1Yp7y2rOCd2-NqS9JCCymoQLhwW20ceRo/edit?usp=drive_link&ouid=106042409874534183709&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver storyboard o código"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://view.genially.com/69b9b8490e246a0a8822c005" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Probar recurso funcional"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=x8Exu-tazGY" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-recurso-infografias">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Documento</span>
+                                    <img src="img/re_4.png" alt="Muestra de infografía explicativa" class="thumb-img cover-top-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 05</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Infografías</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1fbAtO-UTXWQeZR18KBZS8AHE9Fbu-Os-mog1MYrQEM8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_INFOGRAFIA_UX</a>
+                                            <a href="https://docs.google.com/document/d/1XPIu-DS-RjNxzi8spSj6JjNRE9YxeMV-Eu0gtpgjeqw/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">INFOGRAFIA_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/1ParDwsezf7oj98SGhPt5lMjABxX8XWEk4tx7e53S5-M/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver texto original"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://drive.google.com/file/d/1nRmyDC_5swlWCwR8AQ7-mjwuUiNefDnt/view" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver infografía terminada"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=fXRieazuUqU" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-recurso-podcast">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Audio</span>
+                                    <img src="img/re_5.png" alt="Interfaz de reproducción de podcast" class="thumb-img cover-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 06</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Podcast</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1iEz3jtPmyKQ1ung-w9xmYE35kLL8kk9cvoG25hUNwnU/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_PODCAST_UX</a>
+                                            <a href="https://docs.google.com/document/d/1cs5QjTzK3RpU9yF7wcBXM2dGMkFs-art_tVVxVo8_T0/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">PODCAST_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/1gIBcTqAoaK0xhUX6-gns0_8Dw_ZBZtcC-DMjqoLlSSU/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver guion editable"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://soundcloud.com/uniacc/los-diagnosticos-de-clima-y-riesgos-psicosociales/s-S7GRg3zxCUA" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Escuchar audio final"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=tdOwGwuTWy8" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-recurso-abierto">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Enlace</span>
+                                    <img src="img/re_6.png" alt="Representación visual de un recurso de enlace abierto" class="thumb-img cover-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 07</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Recurso abierto</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1RDg_4Dl7hUndkD2IhVwUSJUszA2KOIScU8rb7GfV3eQ/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_RABIERTO_UX</a>
+                                            <a href="https://docs.google.com/document/d/1jKCLd8oZcvBsNMM_Adqs29Fzdw9rS9O9eeTvQxVtJiw/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">RABIERTO_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/19M3_UKObOpJO-8IqNIT44phQtohsyIk495bcZSxSG4M/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver documento editable"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://openaccess.uoc.edu/handle/10609/152265" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Navegar enlace"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=uALa37UM55w" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div class="thumb-container img-tall" id="img-lecturas-obligatorias">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Documento</span>
+                                    <img src="img/re_7.png" alt="Documento base para lecturas obligatorias" class="thumb-img cover-top-img">
+                                </div>
+                                <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 08</span>
+                                        <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Lecturas obligatorias</h3>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/16BHH0n9bjwoRbgiEdJrvK2kRnCe_74JA_kr9tKGYKE4/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_LECTURAS_UX</a>
+                                            <a href="https://docs.google.com/document/d/1WWGWGEG-VJeEsNTShLwBeQ_R8JjMsNIkdjnEbVv8hRI/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">LECTURAS_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-3">
+                                            <a href="https://docs.google.com/document/d/18MyBjM_GofsJ8Vo5NyshV3iQmr_Ws1SbMZhqSKaiYdo/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver formato editable"><i class="fas fa-edit text-base" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://drive.google.com/file/d/10u6Ra5vf2YaCpTuhVzMif2ZXMipZ0QiA/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver documento funcional"><i class="fas fa-eye text-base" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=6GhBHObCQtU" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="evaluacion-diagnostica" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-file-invoice" aria-hidden="true"></i> Evaluación diagnostica</h2>
+                            <button onclick="copySectionLink('evaluacion-diagnostica')" class="btn-share-section" aria-label="Copiar enlace de Evaluación Diagnóstica"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <article class="card-asset rounded-xl border border-slate-200 overflow-hidden flex flex-col sm:flex-row items-stretch">
+                                <div class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden" id="img-diagnostico-opciona">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Cuestionario</span>
+                                    <img src="img/ed_1.png" alt="Plantilla de cuestionario diagnóstico Opción A" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 09</span>
+                                        <h3 class="font-bold text-davda-dark text-base tracking-tight">Evaluación Diagnóstica Opción A</h3>
+                                    </div>
+                                    <div class="space-y-2.5 w-full">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/16EBjgwdDFSyt6r27AmQlX_e-8eZZH3BvWvCtx11Pc_4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_DIAGNOSTICAA_UX</a>
+                                            <a href="https://docs.google.com/document/d/1oG6rPUs4Qveblyq9prtcw9iGfM22B4XoFNmGxGPHYKg/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">DIAGNOSTICAA_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-2.5">
+                                            <a href="https://docs.google.com/document/d/1RABCUG8dbGaYKN_2ixKYzn03y5_EPcGWtV-OEBYvKig/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver evaluación editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://drive.google.com/file/d/19Ty908MzJx0j4tyi5Ma9oNmkg4mXns3P/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver cuestionario funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=W_Jy7TzL_ts" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset rounded-xl border border-slate-200 overflow-hidden flex flex-col sm:flex-row items-stretch">
+                                <div class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden" id="img-diagnostico-opcionb">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Foro</span>
+                                    <img src="img/ed_2.png" alt="Plantilla de foro diagnóstico Opción B" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 10</span>
+                                        <h3 class="font-bold text-slate-800 text-base tracking-tight">Evaluación Diagnóstica Opción B</h3>
+                                    </div>
+                                    <div class="space-y-2.5 w-full">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1XMvJqndcbP4dVvOL6sofzFJSpRoDnEGNW2CG3JWeV5M/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_DIAGNOSTICAB_UX</a>
+                                            <a href="https://docs.google.com/document/d/16pu6zbQbDGFFQbiP0vP1SaeHko7k6AfBtfMmhgSqIH0/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">DIAGNOSTICAB_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-2.5">
+                                            <a href="https://docs.google.com/document/d/1PdU5Ab8pAjh5myKAkMV2axjbUAMtTw7GfsePR27Z33Y/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver rúbrica o foro editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>Editable</span></a>
+                                            <a href="https://drive.google.com/file/d/15z7VMhfXD_JfVuvGWlJ7i4TgMNdO4NQ1/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver visualización funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>Funcional</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=Xk-G2SyUA6Q" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="evaluacion-formativa" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-chart-line" aria-hidden="true"></i> Evaluación Formativa</h2>
+                            <button onclick="copySectionLink('evaluacion-formativa')" class="btn-share-section" aria-label="Copiar enlace de Evaluación Formativa"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <article class="card-asset">
+                                <div>
+                                    <div class="bg-slate-100 h-32 flex items-center justify-center border-b border-slate-100 relative overflow-hidden" id="img-formativa-foro">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Foro</span>
+                                        <img src="img/ef_1.png" alt="Plantilla para actividad de foro formativo" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-4">
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 11</span>
+                                        <h3 class="font-bold text-davda-dark text-sm tracking-tight">Tipo foro</h3>
+                                    </div>
+                                </div>
+                                <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="grid grid-cols-1 gap-1.5">
+                                        <a href="https://docs.google.com/document/d/1W_A-9KCq1CjlxkcjStLfDWLSorKyfP2qnCw9UpE9oq0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_FORMATIVA_UX</a>
+                                        <a href="https://docs.google.com/document/d/1TulZxQBey6mOP-6eo2nKzCJ4tPciz66QqCBxvkzVwhA/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">FORO_FORMATIVO_TR</a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5 border-t border-slate-100 pt-2">
+                                        <a href="https://docs.google.com/document/d/1FD2fZO4TE2PYJ6kqrFVUCclGwf7yGJCt5LEbuTphEQc/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver documento editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_FORO_U0</span></a>
+                                        <a href="https://drive.google.com/file/d/1KB41kjHVKwZa7S4gu9CckclA-wSjJTa9/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver foro funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_FORO_U0</span></a>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=MJNFM7CQLOE" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div>
+                                    <div class="bg-slate-100 h-32 flex items-center justify-center border-b border-slate-100 relative overflow-hidden" id="img-formativa-control">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Cuestionario</span>
+                                        <img src="img/ef_2.png" alt="Plantilla para cuestionario de control formativo" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-4">
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 12</span>
+                                        <h3 class="font-bold text-davda-dark text-sm tracking-tight">Tipo control (cuestionario)</h3>
+                                    </div>
+                                </div>
+                                <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="grid grid-cols-1 gap-1.5">
+                                        <a href="https://docs.google.com/document/d/1uWKZqvlE5NlAM3j4u7RpeMPodIQPGUrK0IfWZI-M0xA/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_FORMATIVA_UX</a>
+                                        <a href="https://docs.google.com/document/d/1Z5vXwiDTbEtHySuZ5OYhuK35Zv2MDQygtnamX-O0UP8/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">CONTROL_FORMATIVO_TR</a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5 border-t border-slate-100 pt-2">
+                                        <a href="https://docs.google.com/document/d/1NuYLT39GJb7pUPPSq9dg01o-WA7LiAVvdhNFdmahWIU/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver cuestionario editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
+                                        <a href="https://drive.google.com/file/d/1h3mhS9T9PhwNl0OZzD5ELmsdDY1xw1dr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver cuestionario funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=jaUGXDL9sCI" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div>
+                                    <div class="bg-slate-100 h-32 flex items-center justify-center border-b border-slate-100 relative overflow-hidden" id="img-formativa-tarea">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Tarea</span>
+                                        <img src="img/ef_3.png" alt="Plantilla para tarea o trabajo de evaluación formativa" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-4">
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 13</span>
+                                        <h3 class="font-bold text-davda-dark text-sm tracking-tight">Tipo trabajo (tarea)</h3>
+                                    </div>
+                                </div>
+                                <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="grid grid-cols-1 gap-1.5">
+                                        <a href="https://docs.google.com/document/d/1K0sgohfNj06Q5FS9h5wYKsmSFxfr2_ApFTd4oRpNEyw/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_FORMATIVA_UX</a>
+                                        <a href="https://docs.google.com/document/d/1KTxoCpgBSr_B42sRXmks07Lx-KHsJeBWWx3UAv_BoU8/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">TAREA_FORMATIVA_TR</a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5 border-t border-slate-100 pt-2">
+                                        <a href="https://docs.google.com/document/d/1Y4eiRFqKau53K2bS39KIVPuh5wIHV47N2EkjQZlb6wI/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_FORMATIV</span></a>
+                                        <a href="https://drive.google.com/file/d/1wzbLw0z8V2hz4Uyv8TkzkZwlNhSwMLnt/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver formato funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_FORMATIV</span></a>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=vIOJ7d67MHg" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div>
+                                    <div class="bg-slate-100 h-32 flex items-center justify-center border-b border-slate-100 relative overflow-hidden" id="img-formativa-coevaluacion">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Foro</span>
+                                        <img src="img/ef_4.png" alt="Plantilla para actividad de co-evaluación" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-4">
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 14</span>
+                                        <h3 class="font-bold text-davda-dark text-sm tracking-tight">Co-evaluación (foro)</h3>
+                                    </div>
+                                </div>
+                                <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="grid grid-cols-1 gap-1.5">
+                                        <a href="https://docs.google.com/document/d/1cQD9847XsaGgSLRv_0e3BqPqjp2eJmHOs2-mrQBOMJE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_COEVALUACION</a>
+                                        <a href="https://docs.google.com/document/d/10atMFRufo8AatQpdsnTr-_yVLTczBvQNd6RmnuW9WCw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-dark">FORO_COEVALUACION_TR</a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5 border-t border-slate-100 pt-2">
+                                        <a href="https://drive.google.com/file/d/18-S7t3BELP5wBXcvqPsDMEV09MpnWJ7t/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver estructura editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
+                                        <a href="https://docs.google.com/spreadsheets/d/1FR6cwAfZknvK6brN91CQMUmy1jX2k_4WQmeL_fFstVw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver formato funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
+                                    </div>
+                                    <a href="https://youtu.be/KRoB-qxspho" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="evaluacion-sumativa" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-percentage" aria-hidden="true"></i> Evaluación Sumativa</h2>
+                            <button onclick="copySectionLink('evaluacion-sumativa')" class="btn-share-section" aria-label="Copiar enlace de Evaluación Sumativa"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <article class="card-asset">
+                                <div>
+                                    <div class="bg-slate-100 h-40 flex items-center justify-center border-b border-slate-200 relative overflow-hidden" id="img-sumativa-control">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Cuestionario</span>
+                                        <img src="img/es_1.png" alt="Documento base de control sumativo" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-5">
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 15</span>
+                                        <h3 class="font-bold text-slate-800 text-base">Tipo control (cuestionario)</h3>
+                                    </div>
+                                </div>
+                                <div class="p-5 pt-0 space-y-3">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <a href="https://docs.google.com/document/d/1ZghtYjI0CiX8K9w-clBxQknSxuNmPg0SdqchGG6WTuY/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_CONTROL_UX</a>
+                                        <a href="https://docs.google.com/document/d/12wBUozNssMnXImWeU6kNKWSZ9GfZN1_PTKeRjJcrmTQ/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">CONTROL_TR</a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 border-t border-slate-100 pt-2.5">
+                                        <a href="https://docs.google.com/document/d/1NuYLT39GJb7pUPPSq9dg01o-WA7LiAVvdhNFdmahWIU/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver matriz editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
+                                        <a href="https://drive.google.com/file/d/1h3mhS9T9PhwNl0OZzD5ELmsdDY1xw1dr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver diseño funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=jaUGXDL9sCI" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div>
+                                    <div class="bg-slate-100 h-40 flex items-center justify-center border-b border-slate-200 relative overflow-hidden" id="img-sumativa-tarea">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Tarea</span>
+                                        <img src="img/es_2.png" alt="Documento base de trabajo o tarea sumativa" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-5">
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 16</span>
+                                        <h3 class="font-bold text-slate-800 text-base">Tipo trabajo (tarea)</h3>
+                                    </div>
+                                </div>
+                                <div class="p-5 pt-0 space-y-3">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <a href="https://docs.google.com/document/d/1aYYf7YiIixrqIgqVvLwMQayA13I_8WEU_CfyYQlhRIY/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_SUMATIVA_UX</a>
+                                        <a href="https://docs.google.com/document/d/1cnWvItypWfa7JLNY5cO_ekYH5DK0C3NwflZcplmFvMc/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">TAREA_SUMATIVA_TR</a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 border-t border-slate-100 pt-2.5">
+                                        <a href="https://docs.google.com/document/d/1MKT6t-iCd-8x9mo_NqcFudxNtIyttc_6HfSf8CHkuNM/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver formato editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_SUMATIV</span></a>
+                                        <a href="https://drive.google.com/file/d/1hrtkB2IN6CPiHoKT6_ZgZQCe8bIuHEiA/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver formato visual"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_SUMATIV</span></a>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=vIOJ7d67MHg" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                            <article class="card-asset">
+                                <div>
+                                    <div class="bg-slate-100 h-40 flex items-center justify-center border-b border-slate-200 relative overflow-hidden" id="img-sumativa-coevaluacion">
+                                        <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Foro</span>
+                                        <img src="img/es_3.png" alt="Documento para la co-evaluación sumativa" class="w-full h-full object-cover object-top">
+                                    </div>
+                                    <div class="p-5">
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 17</span>
+                                        <h3 class="font-bold text-slate-800 text-base">Co-evaluación (foro)</h3>
+                                    </div>
+                                </div>
+                                <div class="p-5 pt-0 space-y-3">
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <a href="https://docs.google.com/document/d/1cQD9847XsaGgSLRv_0e3BqPqjp2eJmHOs2-mrQBOMJE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_COEVALUACION</a>
+                                        <a href="https://docs.google.com/document/d/10atMFRufo8AatQpdsnTr-_yVLTczBvQNd6RmnuW9WCw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-dark">FORO_COEVALUACION_TR</a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 border-t border-slate-100 pt-2.5">
+                                        <a href="https://drive.google.com/file/d/18-S7t3BELP5wBXcvqPsDMEV09MpnWJ7t/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver documento editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
+                                        <a href="https://docs.google.com/spreadsheets/d/1FR6cwAfZknvK6brN91CQMUmy1jX2k_4WQmeL_fFstVw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver documento final"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
+                                    </div>
+                                    <a href="https://youtu.be/KRoB-qxspho" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="instrumentos-calificacion" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-star" aria-hidden="true"></i> Instrumentos de calificación</h2>
+                            <button onclick="copySectionLink('instrumentos-calificacion')" class="btn-share-section" aria-label="Copiar enlace de Instrumentos de calificación"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <article class="bg-white rounded-xl border border-slate-200 overflow-hidden card-asset transition-all flex flex-col sm:flex-row items-stretch">
+                                <div class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden" id="img-herramienta-rubrica">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Documento</span>
+                                    <img src="img/ic_1.png" alt="Documento de matriz de rúbrica" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 18</span>
+                                        <h3 class="font-bold text-davda-dark text-base tracking-tight">Rúbrica</h3>
+                                    </div>
+                                    <div class="space-y-2.5 w-full">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1LwIFOmIhVoMUhn7aPiTn_bBngJTp3i7Gx2tPTZUb-JE/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_RUBRICA_UX</a>
+                                            <a href="https://docs.google.com/document/d/1dQK_m4WVUmp3CrRSnhviPKwe5LoXuV2oha4lm9z1sxE/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">RUBRICA_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-2.5">
+                                            <a href="https://docs.google.com/document/d/1B54aUsW3d9mcstcEBMbDbbOo-KsQ81pExvylXd5Upcs/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver borrador de rúbrica"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_RUBRICA</span></a>
+                                            <a href="https://drive.google.com/file/d/1hrtkB2IN6CPiHoKT6_ZgZQCe8bIuHEiA/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver rúbrica diagramada"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_RUBRICA</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=1DqByjBOBs0" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="bg-white rounded-xl border border-slate-200 overflow-hidden card-asset transition-all flex flex-col sm:flex-row items-stretch">
+                                <div class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden" id="img-herramienta-escala">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Documento</span>
+                                    <img src="img/ic_2.png" alt="Documento de matriz de escala de apreciación" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 19</span>
+                                        <h3 class="font-bold text-davda-dark text-base tracking-tight">Escala de apreciación</h3>
+                                    </div>
+                                    <div class="space-y-2.5 w-full">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1PImVoCzvc7FbgT8HOKmD9sbwjA9iww-uyBbKKjGI9JE/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_ESCALA_UX</a>
+                                            <a href="https://docs.google.com/document/d/1VLYc1ZgEpGEgXIGVmO1UOpSs4vvTy6hko8aHx6zz83k/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">ESCALA_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-2.5">
+                                            <a href="https://docs.google.com/document/d/1EsorZuunO2QekJwpDmxv5IXk-BiqXpx0OlO-0MbqR2o/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver formato editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_ESCALA</span></a>
+                                            <a href="https://drive.google.com/file/d/1wYIywucMH0Bu4dKIKDFrqsRpncD6AJjT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver escala final diagramada"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_ESCALA</span></a>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=rjGZqFxb8Oc" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="unidad-cierre" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Unidad X* = Cierre</h2>
+                            <button onclick="copySectionLink('unidad-cierre')" class="btn-share-section" aria-label="Copiar enlace de Unidad Cierre"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <article class="card-asset rounded-xl border border-slate-200 overflow-hidden flex flex-col sm:flex-row items-stretch">
+                                <div class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden" id="img-cierre-examenfinal">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Tarea</span>
+                                    <img src="img/uef.png" alt="Documento base de examen final" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 20</span>
+                                        <h3 class="font-bold text-davda-dark text-base tracking-tight">Examen final**</h3>
+                                    </div>
+                                    <div class="space-y-2.5 w-full">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1ka-KmnPnejnBX0opZhamPc_9V225kucD9v9WeTOsnsQ/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_FINAL_UX</a>
+                                            <a href="https://docs.google.com/document/d/11aWzj7HjOeAtHSoy0YJ8dp6IWurkULyNqPoqy0u-JF0/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">EVALUACIONFINAL_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-2.5">
+                                            <a href="https://docs.google.com/document/d/1G64hkayDNMoMxLx6ae71XIxuWv6e4pBiz3lILEWsSJI/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_FINAL</span></a>
+                                            <a href="https://drive.google.com/file/d/1qWk6X9Uz9EiMVXoT5fO-afRVccm0G1c8/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver formato funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_FINAL</span></a>
+                                        </div>
+                                        <div class="w-full text-center bg-gray-50 text-gray-500 text-[10px] font-bold py-2 px-3 rounded-md border border-gray-200">Seguir las mismas indicaciones de configuración para la tarea</div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="card-asset rounded-xl border border-slate-200 overflow-hidden flex flex-col sm:flex-row items-stretch">
+                                <div class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden" id="img-cierre-examenrepeticion">
+                                    <span class="absolute top-3 right-3 bg-davda-dark text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-wider z-10">Tarea</span>
+                                    <img src="img/uer.png" alt="Documento base para examen de repetición" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div>
+                                        <span class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 21</span>
+                                        <h3 class="font-bold text-davda-dark text-base tracking-tight">Examen de repetición**</h3>
+                                    </div>
+                                    <div class="space-y-2.5 w-full">
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <a href="https://docs.google.com/document/d/1PberU9IRbzmo0aMTqq5ZLeO2CR8eOLLznDY432B77rQ/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-primary">CODIGO_REPETICION_UX</a>
+                                            <a href="https://docs.google.com/document/d/1UjzjFNENMvVmUWkhUPUrnLWw9DljV0i02v_oFLWIegM/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-dark">REPETICION_TR</a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 border-t border-gray-100 pt-2.5">
+                                            <a href="https://docs.google.com/document/d/1xF4_RoYMLlw_FPY3apTt-LMh88VVpAbC1rjpWtsfiQo/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver repetición editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_REPETICION</span></a>
+                                            <a href="https://drive.google.com/file/d/1jnvHaXCeYO0yKjff3zLjkrx-tSwJxLw9/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver repetición en diseño funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_REPETICION</span></a>
+                                        </div>
+                                        <div class="w-full text-center bg-gray-50 text-gray-500 text-[10px] font-bold py-2 px-3 rounded-md border border-gray-200">Seguir las mismas indicaciones de configuración para la tarea</div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="mt-4 bg-white rounded-xl border border-slate-200 p-4 text-[11px] text-gray-500 space-y-1 shadow-2xs">
+                            <p><b>*</b> Última unidad en el programa + 1</p>
+                            <p><b>**</b> Se utiliza rúbrica como instrumento obligatorio de calificación.</p>
+                        </div>
+                    </section>
+
+                    <section id="configuraciones-generales" class="scroll-mt-6">
+                        <div class="bg-davda-dark text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-sliders-h" aria-hidden="true"></i> Configuraciones generales</h2>
+                            <button onclick="copySectionLink('configuraciones-generales')" class="btn-share-section" aria-label="Copiar enlace de Configuraciones generales"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <article class="bg-white rounded-xl border border-slate-200/80 p-6 flex items-start justify-between gap-4 shadow-2xs hover:border-davda-primary transition-all" id="img-config-fechas">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-davda-primary/10 text-davda-primary p-3 rounded-xl font-bold text-base"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
+                                    <div>
+                                        <h3 class="font-bold text-slate-800 text-base">Fechas</h3>
+                                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">Configuraciones generales de plazos, aperturas y restricciones temporales obligatorias dentro de Moodle.</p>
+                                    </div>
+                                </div>
+                                <a href="https://www.youtube.com/watch?v=B93Tztf4beE" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial md:w-40 py-3 font-bold uppercase shrink-0"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                            </article>
+                            <article class="bg-white rounded-xl border border-slate-200/80 p-6 flex items-start justify-between gap-4 shadow-2xs hover:border-davda-primary transition-all" id="img-config-calificaciones">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-davda-amarillo/10 text-davda-amarillo p-3 rounded-xl font-bold text-base"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+                                    <div>
+                                        <h3 class="font-bold text-slate-800 text-base">Cuaderno de calificaciones</h3>
+                                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">Estructuración y ponderación de los criterios de evaluación en la plataforma.</p>
+                                    </div>
+                                </div>
+                                <a href="https://www.youtube.com/watch?v=LI8MemvaAJc" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial md:w-40 py-3 font-bold uppercase shrink-0"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="manuales" class="scroll-mt-6">
+                        <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-book-open" aria-hidden="true"></i> Manuales</h2>
+                            <button onclick="copySectionLink('manuales')" class="btn-share-section" aria-label="Copiar enlace de Manuales"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" id="card-manual-estilo">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-bold text-davda-amarillo uppercase tracking-widest">Recurso de apoyo</span>
+                                        <div class="w-8 h-8 bg-davda-amarillo/10 text-davda-amarillo rounded-lg flex items-center justify-center"><i class="fas fa-pen-nib" aria-hidden="true"></i></div>
+                                    </div>
+                                    <h3 class="font-bold text-davda-dark text-sm tracking-tight">Guía sobre Norma APA 7a edición</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Lineamientos y normativas oficiales para la citación, referenciación y formato académico según el estándar APA 7a edición.</p>
+                                </div>
+                                <a href="https://www.uniacc.cl/biblioteca/normas-apa/" target="_blank" rel="noopener noreferrer" class="mt-5 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
+                            </article>
+                            
+                            <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" id="card-manual-ia">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-bold text-davda-magenta uppercase tracking-widest">Recurso de apoyo</span>
+                                        <div class="w-8 h-8 bg-davda-magenta/10 text-davda-magenta rounded-lg flex items-center justify-center"><i class="fas fa-robot" aria-hidden="true"></i></div>
+                                    </div>
+                                    <h3 class="font-bold text-davda-dark text-sm tracking-tight">Uso de IA</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Marco normativo y ético para la integración y declaración de herramientas de inteligencia artificial en el desarrollo de la asignatura.</p>
+                                </div>
+                                <a href="https://www.uniacc.cl/wp-content/uploads/2026/04/inteligencias_artificiales.pdf" target="_blank" rel="noopener noreferrer" class="mt-5 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
+                            </article>
+                            
+                            <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" id="card-manual-redaccion">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-bold text-davda-primary uppercase tracking-widest">Recurso de apoyo</span>
+                                        <div class="w-8 h-8 bg-davda-primary/10 text-davda-primary rounded-lg flex items-center justify-center"><i class="fas fa-spell-check" aria-hidden="true"></i></div>
+                                    </div>
+                                    <h3 class="font-bold text-davda-dark text-sm tracking-tight">Redacción básica</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Guía técnica fundamental de ortografía, cohesión textual y estructuras gramaticales requeridas para el material académico escrito.</p>
+                                </div>
+                                <a href="https://docs.google.com/document/d/1SCZydEDFVMTQH4XZcW818yTMnVHYy2PbiPPPiQwwjQ0/edit?pli=1&tab=t.0#heading=h.zb1n2l5bzl4f" target="_blank" rel="noopener noreferrer" class="mt-5 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
+                            </article>
+                            
+                            <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" id="card-manual-textoalt">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-bold text-davda-magenta uppercase tracking-widest">Recurso de apoyo</span>
+                                        <div class="w-8 h-8 bg-davda-magenta/10 text-davda-magenta rounded-lg flex items-center justify-center"><i class="fas fa-universal-access" aria-hidden="true"></i></div>
+                                    </div>
+                                    <h3 class="font-bold text-davda-dark text-sm tracking-tight">Guía sobre texto alternativo</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Lineamientos obligatorios de accesibilidad digital destinados a la descripción textual correcta de imágenes, gráficos y objetos incrustados para lectores de pantalla.</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1L3vGECqjhx8R6950jHqa3yBkmYxKSBxK/view" target="_blank" rel="noopener noreferrer" class="mt-5 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
+                            </article>
+                            
+                            <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" id="card-manual-estudianteia">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-bold text-davda-primary uppercase tracking-widest">Recurso de apoyo</span>
+                                        <div class="w-8 h-8 bg-davda-primary/10 text-davda-primary rounded-lg flex items-center justify-center"><i class="fas fa-user-graduate" aria-hidden="true"></i></div>
+                                    </div>
+                                    <h3 class="font-bold text-davda-dark text-sm tracking-tight">Guía del estudiante sobre IA</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Recomendaciones metodológicas para orientar al alumnado sobre el uso correcto y permitido de la IA en sus procesos de estudio.</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1mEI4-sduwLgb9jY1dziIjyIrVl8tJiIJ/view" target="_blank" rel="noopener noreferrer" class="mt-5 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
+                            </article>
+                            
+                            <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" id="card-manual-sesgos">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-bold text-davda-amarillo uppercase tracking-widest">Recurso de apoyo</span>
+                                        <div class="w-8 h-8 bg-davda-amarillo/10 text-davda-amarillo rounded-lg flex items-center justify-center"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></div>
+                                    </div>
+                                    <h3 class="font-bold text-davda-dark text-sm tracking-tight">Manual de lenguaje libre de sesgos</h3>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Directrices institucionales para una comunicación inclusiva, neutral y libre de sesgos en todas las aulas de aprendizaje.</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1uEg27bBxBlhe3ZSX-i3mtvsVw1mpVPCS/view" target="_blank" rel="noopener noreferrer" class="mt-5 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="recursos-graficos" class="scroll-mt-6">
+                        <div class="bg-davda-dark text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
+                            <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-photo-video" aria-hidden="true"></i> Recursos gráficos</h2>
+                            <button onclick="copySectionLink('recursos-graficos')" class="btn-share-section" aria-label="Copiar enlace de Recursos gráficos"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
+                        </div>
+                        <article class="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 card-asset transition-all" id="img-repositorio-multimedia">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-davda-primary/10 text-davda-primary p-3 rounded-xl text-xl font-bold"><i class="fas fa-paint-brush" aria-hidden="true"></i></div>
+                                <div>
+                                    <h3 class="font-bold text-davda-dark text-base tracking-tight">Repositorio de recursos gráficos multimedia</h3>
+                                    <p class="text-xs text-gray-500 mt-1 leading-relaxed">Banco unificado de vectores, iconos oficiales, tipografías y recursos editables autorizados para el diseño instruccional.</p>
+                                </div>
+                            </div>
+                            <a href="https://uniacc-cgm.github.io/CGM/index.html" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 px-5 rounded-lg shadow-xs transition-all cursor-pointer whitespace-nowrap font-bold text-center">↗ Acceder al repositorio</a>
+                        </article>
+                    </section>
+
+                </div>
+            </div>
+            
+            <footer class="border-t border-gray-200 py-4 px-6 md:px-12 bg-white z-10 shrink-0 text-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+                <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-500 text-[11px] footer-text">
+                    <p>&copy; 2026 DAVDA. Todos los derechos reservados.</p>
+                    <p>Dudas o sugerencias: contactar al Coordinador Gráfico Multimedia, felipe.hernandez@uniacc.edu.</p>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <div class="toast" id="toastMsg" role="alert" aria-live="assertive">Copiado al portapapeles</div>
+
+</body>
+</html>

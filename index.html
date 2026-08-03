@@ -88,48 +88,48 @@
         </aside>
 
         <!-- CONTENEDOR PRINCIPAL -->
-        <main class="flex-1 flex flex-col bg-davda-bg h-screen relative">
+        <main class="flex-1 flex flex-col bg-davda-bg h-screen relative min-w-0 overflow-hidden">
             
-            <header class="h-20 md:h-24 flex items-center justify-between px-6 lg:px-10 bg-white border-b border-gray-200 shadow-sm z-10 shrink-0 gap-4">
-                <div class="flex items-center gap-4 min-w-0">
-                    <button onclick="toggleSidebar()" class="flex items-center gap-2 bg-gray-100 border border-gray-200 text-davda-dark hover:bg-gray-200 shadow-sm px-4 py-2.5 rounded-lg transition-colors font-bold text-xs shrink-0" aria-label="Abrir menú lateral">
+            <header class="h-18 sm:h-20 md:h-24 flex items-center justify-between px-3 sm:px-6 lg:px-10 bg-white border-b border-gray-200 shadow-sm z-10 shrink-0 gap-2 sm:gap-4">
+                <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+                    <button onclick="toggleSidebar()" class="flex items-center justify-center gap-2 bg-gray-100 border border-gray-200 text-davda-dark hover:bg-gray-200 shadow-sm px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg transition-colors font-bold text-xs shrink-0" aria-label="Abrir menú lateral">
                         <i class="fas fa-bars text-sm" aria-hidden="true"></i> <span class="hidden sm:inline-block">Menú</span>
                     </button>
                     <div class="min-w-0">
                         <!-- Título cambiante según la vista activa -->
-                        <div id="headerTitleRepo">
+                        <div id="headerTitleRepo" class="min-w-0">
                             <h1 class="text-base font-black tracking-tight text-davda-dark hidden md:block truncate">DAVDA • Términos de Referencia (TR)</h1>
-                            <p class="text-xs text-gray-500 font-medium mt-0.5 hidden md:block">para la construcción de asignaturas de modalidades online y semipresencial</p>
-                            <h1 class="text-sm font-black tracking-tight text-davda-dark block md:hidden truncate">TR Asignaturas</h1>
+                            <p class="text-xs text-gray-500 font-medium mt-0.5 hidden md:block truncate">para la construcción de asignaturas de modalidades online y semipresencial</p>
+                            <h1 class="text-xs sm:text-sm font-black tracking-tight text-davda-dark block md:hidden truncate">TR Asignaturas</h1>
                         </div>
-                        <div id="headerTitleProceso" class="hidden">
+                        <div id="headerTitleProceso" class="hidden min-w-0">
                             <h1 class="text-base font-black tracking-tight text-davda-dark hidden md:block truncate">Proceso de Diseño Tecnopedagógico</h1>
-                            <p class="text-xs text-gray-500 font-medium mt-0.5 hidden md:block">Ciclo instruccional, fases operativas y validaciones técnicas en plataforma</p>
-                            <h1 class="text-sm font-black tracking-tight text-davda-dark block md:hidden truncate">Diseño Tecnopedagógico</h1>
+                            <p class="text-xs text-gray-500 font-medium mt-0.5 hidden md:block truncate">Ciclo instruccional, fases operativas y validaciones técnicas en plataforma</p>
+                            <h1 class="text-xs sm:text-sm font-black tracking-tight text-davda-dark block md:hidden truncate">Diseño Tecnopedagógico</h1>
                         </div>
-                        <div id="headerTitleAula" class="hidden">
+                        <div id="headerTitleAula" class="hidden min-w-0">
                             <h1 class="text-base font-black tracking-tight text-davda-dark hidden md:block truncate">Conoce el aula virtual</h1>
-                            <p class="text-xs text-gray-500 font-medium mt-0.5 hidden md:block">Estructura referencial y distribución gráfica de la plataforma Moodle</p>
-                            <h1 class="text-sm font-black tracking-tight text-davda-dark block md:hidden truncate">Aula Virtual</h1>
+                            <p class="text-xs text-gray-500 font-medium mt-0.5 hidden md:block truncate">Estructura referencial y distribución gráfica de la plataforma Moodle</p>
+                            <h1 class="text-xs sm:text-sm font-black tracking-tight text-davda-dark block md:hidden truncate">Aula Virtual</h1>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-3 shrink-0">
-                    <!-- Buscador Instantáneo (Solo en vista repositorio) -->
-                    <div id="headerSearchWrapper" class="relative w-44 sm:w-60 md:w-80">
+                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                    <!-- Buscador Instantáneo Adaptativo (Solo en vista repositorio) -->
+                    <div id="headerSearchWrapper" class="relative w-32 sm:w-48 md:w-80">
                         <label for="searchInput" class="sr-only">Buscar recursos o ítems</label>
-                        <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs" aria-hidden="true"></i>
-                        <input type="search" id="searchInput" placeholder="Buscar por título o código..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-xs font-medium text-davda-dark focus:outline-none focus:border-davda-primary focus:bg-white transition-all">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs" aria-hidden="true"></i>
+                        <input type="search" id="searchInput" placeholder="Buscar..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-8 pr-3 py-1.5 sm:py-2 text-xs font-medium text-davda-dark focus:outline-none focus:border-davda-primary focus:bg-white transition-all">
                     </div>
 
                     <!-- Botón rápido para volver al Repo desde Proceso de Diseño o Conoce Aula -->
-                    <button id="btnBackToRepo" onclick="switchView('repositorio')" class="hidden bg-davda-dark hover:bg-gray-700 text-white text-xs font-bold py-2 px-4 rounded-lg shadow-sm transition-colors items-center gap-2">
+                    <button id="btnBackToRepo" onclick="switchView('repositorio')" class="hidden bg-davda-dark hover:bg-gray-700 text-white text-xs font-bold py-2 px-3 sm:px-4 rounded-lg shadow-sm transition-colors items-center gap-2">
                         <i class="fas fa-arrow-left text-xs" aria-hidden="true"></i> <span class="hidden sm:inline">Volver al Repositorio</span>
                     </button>
 
                     <!-- Botón Registro de Cambios (Campana) -->
-                    <button onclick="toggleChangelog()" class="relative bg-gray-100 hover:bg-gray-200 border border-gray-200 text-davda-dark w-10 h-10 rounded-lg flex items-center justify-center transition-colors shadow-sm" aria-label="Ver registro de cambios" title="Novedades y Registro de Cambios">
+                    <button onclick="toggleChangelog()" class="relative bg-gray-100 hover:bg-gray-200 border border-gray-200 text-davda-dark w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-colors shadow-sm shrink-0" aria-label="Ver registro de cambios" title="Novedades y Registro de Cambios">
                         <i class="fas fa-bell text-sm" aria-hidden="true"></i>
                         <span class="absolute top-2 right-2 w-2 h-2 bg-davda-primary rounded-full"></span>
                     </button>
@@ -137,10 +137,10 @@
             </header>
 
             <!-- VISTA 1: REPOSITORIO TR PRINCIPAL -->
-            <div id="viewRepositorio" class="flex-1 flex flex-col overflow-hidden">
+            <div id="viewRepositorio" class="flex-1 flex flex-col overflow-hidden min-w-0">
                 <!-- Barra inferior de Filtros por Etiqueta -->
-                <div class="bg-white border-b border-gray-200 px-6 lg:px-10 py-3 flex items-center gap-2 overflow-x-auto custom-scrollbar shrink-0" role="toolbar" aria-label="Filtrar por categoría">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 mr-2 shrink-0">Filtrar:</span>
+                <div class="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-10 py-2.5 sm:py-3 flex items-center gap-2 overflow-x-auto custom-scrollbar shrink-0" role="toolbar" aria-label="Filtrar por categoría">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 mr-1 sm:mr-2 shrink-0">Filtrar:</span>
                     <button class="filter-chip active" data-filter="all">Todos</button>
                     <button class="filter-chip" data-filter="documento">Documentos</button>
                     <button class="filter-chip" data-filter="interactivo">Interactivos</button>
@@ -148,23 +148,23 @@
                     <button class="filter-chip" data-filter="cuestionario">Cuestionarios / Evaluaciones</button>
                 </div>
 
-                <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 scroll-smooth relative" id="mainScrollArea">
-                    <div class="max-w-7xl mx-auto space-y-20 pb-10">
+                <div class="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6 md:p-12 scroll-smooth relative" id="mainScrollArea">
+                    <div class="max-w-7xl mx-auto space-y-16 sm:space-y-20 pb-10">
 
                         <!-- SECCIÓN 01: UNIDAD 0 -->
                         <section id="unidad-0" class="scroll-mt-6">
-                            <div class="bg-davda-dark text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-flag text-davda-primary" aria-hidden="true"></i> 01 Unidad 0 = Presentación</h2>
+                            <div class="bg-davda-dark text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-flag text-davda-primary" aria-hidden="true"></i> 01 Unidad 0 = Presentación</h2>
                                 <button onclick="copySectionLink('unidad-0')" class="btn-share-section" aria-label="Copiar enlace de Unidad 0"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                                 
                                 <article class="card-asset" data-category="documento" data-title="Plan de la asignatura CODIGO_PLAN_U0 PLAN_TR">
                                     <figure class="thumb-container img-standard m-0" id="img-plan-asignatura">
                                         <mark role="status" class="badge badge-doc">Documento</mark>
                                         <img src="img/u0_1.png" alt="Vista previa del documento del plan de la asignatura" class="thumb-img cover-top-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U0-01" class="text-[9px] font-bold text-gray-400 block mb-1">U0 • Item 01</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Plan de la asignatura</h3>
@@ -188,7 +188,7 @@
                                         <mark role="status" class="badge badge-int">Interactivo</mark>
                                         <img src="img/u0_2.png" alt="Captura de pantalla de la presentación interactiva de la asignatura" class="thumb-img cover-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U0-02" class="text-[9px] font-bold text-gray-400 block mb-1">U0 • Item 02</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Presentación de la asignatura</h3>
@@ -212,7 +212,7 @@
                                         <mark role="status" class="badge badge-doc">Documento</mark>
                                         <img src="img/u0_3.png" alt="Vista previa del documento de orientaciones para la docencia" class="thumb-img cover-top-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U0-03" class="text-[9px] font-bold text-gray-400 block mb-1">U0 • Item 03</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Orientaciones para la docencia</h3>
@@ -235,8 +235,8 @@
 
                         <!-- SECCIÓN 02: PRESENTACIÓN DE UNIDAD -->
                         <section id="unidades-programa" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-cubes" aria-hidden="true"></i> 02 Presentacion de unidad</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-cubes" aria-hidden="true"></i> 02 Presentacion de unidad</h2>
                                 <button onclick="copySectionLink('unidades-programa')" class="btn-share-section" aria-label="Copiar enlace de Presentacion de unidad"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
                             <div class="w-full">
@@ -246,7 +246,7 @@
                                             <mark role="status" class="badge badge-int">Interactivo</mark>
                                             <img src="img/up_1.png" alt="Captura de interfaz de presentación de unidad" class="w-full h-full object-cover">
                                         </figure>
-                                        <div class="p-6 flex items-center">
+                                        <div class="p-5 sm:p-6 flex items-center">
                                             <div>
                                                 <data value="U1-01" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 01</data>
                                                 <h3 class="font-bold text-davda-dark text-lg tracking-tight">Presentación unidad</h3>
@@ -254,7 +254,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-6 bg-slate-50/50 md:border-l border-slate-100 flex flex-col justify-center space-y-3 min-w-xs md:w-80">
+                                    <div class="p-5 sm:p-6 bg-slate-50/50 md:border-l border-slate-100 flex flex-col justify-center space-y-3 min-w-xs md:w-80">
                                         <nav aria-label="Recursos principales de Presentación unidad" class="grid grid-cols-2 gap-2">
                                             <a href="https://view.genially.com/69af2155387152a54546b0d7" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver diseño editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>Editable</span></a>
                                             <a href="https://view.genially.com/69c6b6b6e32a4efc92d4e657" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver recurso funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>Funcional</span></a>
@@ -270,17 +270,17 @@
 
                         <!-- SECCIÓN 03: RECURSOS -->
                         <section id="recursos" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-book" aria-hidden="true"></i> 03 Recursos</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-book" aria-hidden="true"></i> 03 Recursos</h2>
                                 <button onclick="copySectionLink('recursos')" class="btn-share-section" aria-label="Copiar enlace de Recursos"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                                 <article class="card-asset" data-category="documento" data-title="Apuntes CODIGO_APUNTE_UX APUNTES_TR">
                                     <figure class="thumb-container img-standard m-0" id="img-recurso-apuntes">
                                         <mark role="status" class="badge badge-doc">Documento</mark>
                                         <img src="img/re_1.png" alt="Previsualización del formato de apuntes" class="thumb-img cover-top-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U1-02" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 02</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Apuntes</h3>
@@ -304,7 +304,7 @@
                                         <mark role="status" class="badge badge-vid">Video</mark>
                                         <img src="img/re_2.png" alt="Miniatura de recurso audiovisual" class="thumb-img cover-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U1-03" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 03</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Videos</h3>
@@ -328,7 +328,7 @@
                                         <mark role="status" class="badge badge-int">Interactivo</mark>
                                         <img src="img/re_3.png" alt="Pantalla de recurso multimedia interactivo" class="thumb-img cover-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U1-04" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 04</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Interactivos</h3>
@@ -352,7 +352,7 @@
                                         <mark role="status" class="badge badge-doc">Documento</mark>
                                         <img src="img/re_4.png" alt="Muestra de infografía explicativa" class="thumb-img cover-top-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U1-05" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 05</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Infografías</h3>
@@ -376,7 +376,7 @@
                                         <mark role="status" class="badge badge-int">Audio</mark>
                                         <img src="img/re_5.png" alt="Interfaz de reproducción de podcast" class="thumb-img cover-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U1-06" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 06</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Podcast</h3>
@@ -400,7 +400,7 @@
                                         <mark role="status" class="badge badge-doc">Enlace</mark>
                                         <img src="img/re_6.png" alt="Representación visual de un recurso de enlace abierto" class="thumb-img cover-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U1-07" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 07</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Recurso abierto</h3>
@@ -424,7 +424,7 @@
                                         <mark role="status" class="badge badge-doc">Documento</mark>
                                         <img src="img/re_7.png" alt="Documento base para lecturas obligatorias" class="thumb-img cover-top-img">
                                     </figure>
-                                    <div class="p-6 flex flex-col flex-1 justify-between space-y-5">
+                                    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-5">
                                         <div>
                                             <data value="U1-08" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 08</data>
                                             <h3 class="font-bold text-[14px] text-davda-dark tracking-tight">Lecturas obligatorias</h3>
@@ -447,18 +447,18 @@
 
                         <!-- SECCIÓN 04: EVALUACIÓN DIAGNÓSTICA -->
                         <section id="evaluacion-diagnostica" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-file-invoice" aria-hidden="true"></i> 04 Evaluación diagnostica</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-file-invoice" aria-hidden="true"></i> 04 Evaluación diagnostica</h2>
                                 <button onclick="copySectionLink('evaluacion-diagnostica')" class="btn-share-section" aria-label="Copiar enlace de Evaluación Diagnóstica"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                                 
                                 <article class="card-asset rounded-xl border border-slate-200 overflow-hidden flex flex-col sm:flex-row items-stretch" data-category="cuestionario" data-title="Evaluación Diagnóstica Opción A CODIGO_DIAGNOSTICAA_UX DIAGNOSTICAA_TR Cuestionario">
                                     <figure class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden m-0" id="img-diagnostico-opciona">
                                         <mark role="status" class="badge badge-doc">Cuestionario</mark>
                                         <img src="img/ed_1.png" alt="Plantilla de cuestionario diagnóstico Opción A" class="w-full h-full object-cover object-top">
                                     </figure>
-                                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                                         <div>
                                             <data value="U1-09" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 09</data>
                                             <h3 class="font-bold text-davda-dark text-base tracking-tight">Evaluación Diagnóstica Opción A</h3>
@@ -482,7 +482,7 @@
                                         <mark role="status" class="badge badge-doc">Foro</mark>
                                         <img src="img/ed_2.png" alt="Plantilla de foro diagnóstico Opción B" class="w-full h-full object-cover object-top">
                                     </figure>
-                                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                                         <div>
                                             <data value="U1-10" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 10</data>
                                             <h3 class="font-bold text-slate-800 text-base tracking-tight">Evaluación Diagnóstica Opción B</h3>
@@ -505,8 +505,8 @@
 
                         <!-- SECCIÓN 05: EVALUACIÓN FORMATIVA (Contenedores figure de mayor altura h-48) -->
                         <section id="evaluacion-formativa" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-chart-line" aria-hidden="true"></i> 05 Evaluación Formativa</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-chart-line" aria-hidden="true"></i> 05 Evaluación Formativa</h2>
                                 <button onclick="copySectionLink('evaluacion-formativa')" class="btn-share-section" aria-label="Copiar enlace de Evaluación Formativa"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -518,12 +518,12 @@
                                             <mark role="status" class="badge badge-doc">Foro</mark>
                                             <img src="img/ef_1.png" alt="Plantilla para actividad de foro formativo" class="w-full h-full object-cover object-top">
                                         </figure>
-                                        <div class="p-4">
+                                        <div class="p-4 sm:p-5">
                                             <data value="U1-11" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 11</data>
                                             <h3 class="font-bold text-davda-dark text-sm tracking-tight">Tipo foro</h3>
                                         </div>
                                     </div>
-                                    <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="p-4 sm:p-5 pt-0 space-y-2.5">
                                         <nav aria-label="Recursos principales de Tipo foro" class="grid grid-cols-2 gap-1.5">
                                             <a href="https://docs.google.com/document/d/1FD2fZO4TE2PYJ6kqrFVUCclGwf7yGJCt5LEbuTphEQc/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver documento editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_FORO</span></a>
                                             <a href="https://drive.google.com/file/d/1KB41kjHVKwZa7S4gu9CckclA-wSjJTa9/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver foro funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_FORO</span></a>
@@ -543,12 +543,12 @@
                                             <mark role="status" class="badge badge-doc">Cuestionario</mark>
                                             <img src="img/ef_2.png" alt="Plantilla para cuestionario de control formativo" class="w-full h-full object-cover object-top">
                                         </figure>
-                                        <div class="p-4">
+                                        <div class="p-4 sm:p-5">
                                             <data value="U1-12" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 12</data>
                                             <h3 class="font-bold text-davda-dark text-sm tracking-tight">Tipo control (cuestionario)</h3>
                                         </div>
                                     </div>
-                                    <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="p-4 sm:p-5 pt-0 space-y-2.5">
                                         <nav aria-label="Recursos principales de Tipo control formativo" class="grid grid-cols-2 gap-1.5">
                                             <a href="https://docs.google.com/document/d/1NuYLT39GJb7pUPPSq9dg01o-WA7LiAVvdhNFdmahWIU/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver cuestionario editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
                                             <a href="https://drive.google.com/file/d/1h3mhS9T9PhwNl0OZzD5ELmsdDY1xw1dr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver cuestionario funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
@@ -568,12 +568,12 @@
                                             <mark role="status" class="badge badge-doc">Tarea</mark>
                                             <img src="img/ef_3.png" alt="Plantilla para tarea o trabajo de evaluación formativa" class="w-full h-full object-cover object-top">
                                         </figure>
-                                        <div class="p-4">
+                                        <div class="p-4 sm:p-5">
                                             <data value="U1-13" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 13</data>
                                             <h3 class="font-bold text-davda-dark text-sm tracking-tight">Tipo trabajo (tarea)</h3>
                                         </div>
                                     </div>
-                                    <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="p-4 sm:p-5 pt-0 space-y-2.5">
                                         <nav aria-label="Recursos principales de Tipo trabajo formativo" class="grid grid-cols-2 gap-1.5">
                                             <a href="https://docs.google.com/document/d/1Y4eiRFqKau53K2bS39KIVPuh5wIHV47N2EkjQZlb6wI/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_FORMATIV</span></a>
                                             <a href="https://drive.google.com/file/d/1wzbLw0z8V2hz4Uyv8TkzkZwlNhSwMLnt/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver formato funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_FORMATIV</span></a>
@@ -593,12 +593,12 @@
                                             <mark role="status" class="badge badge-doc">Foro</mark>
                                             <img src="img/ef_4.png" alt="Plantilla para actividad de co-evaluación" class="w-full h-full object-cover object-top">
                                         </figure>
-                                        <div class="p-4">
+                                        <div class="p-4 sm:p-5">
                                             <data value="U1-14" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 14</data>
                                             <h3 class="font-bold text-davda-dark text-sm tracking-tight">Co-evaluación (foro)</h3>
                                         </div>
                                     </div>
-                                    <div class="p-4 pt-0 space-y-2.5">
+                                    <div class="p-4 sm:p-5 pt-0 space-y-2.5">
                                         <nav aria-label="Recursos principales de Co-evaluación formativa" class="grid grid-cols-2 gap-1.5">
                                             <a href="https://drive.google.com/file/d/18-S7t3BELP5wBXcvqPsDMEV09MpnWJ7t/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10 text-[10px] truncate" title="Ver estructura editable"><i class="fas fa-edit text-xs" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
                                             <a href="https://docs.google.com/spreadsheets/d/1FR6cwAfZknvK6brN91CQMUmy1jX2k_4WQmeL_fFstVw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10 text-[10px] truncate" title="Ver formato funcional"><i class="fas fa-eye text-xs" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
@@ -615,11 +615,11 @@
 
                         <!-- SECCIÓN 06: EVALUACIÓN SUMATIVA (Contenedores figure de mayor altura h-52) -->
                         <section id="evaluacion-sumativa" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-percentage" aria-hidden="true"></i> 06 Evaluación Sumativa</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-percentage" aria-hidden="true"></i> 06 Evaluación Sumativa</h2>
                                 <button onclick="copySectionLink('evaluacion-sumativa')" class="btn-share-section" aria-label="Copiar enlace de Evaluación Sumativa"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                                 
                                 <article class="card-asset" data-category="cuestionario" data-title="Tipo control cuestionario sumativo CODIGO_CONTROL_UX CONTROL_TR">
                                     <div>
@@ -628,12 +628,12 @@
                                             <mark role="status" class="badge badge-doc">Cuestionario</mark>
                                             <img src="img/es_1.png" alt="Documento base de control sumativo" class="w-full h-full object-cover object-top">
                                         </figure>
-                                        <div class="p-5">
+                                        <div class="p-5 sm:p-6">
                                             <data value="U1-15" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 15</data>
                                             <h3 class="font-bold text-slate-800 text-base">Tipo control (cuestionario)</h3>
                                         </div>
                                     </div>
-                                    <div class="p-5 pt-0 space-y-3">
+                                    <div class="p-5 sm:p-6 pt-0 space-y-3">
                                         <nav aria-label="Recursos principales de Control sumativo" class="grid grid-cols-2 gap-2">
                                             <a href="https://docs.google.com/document/d/1NuYLT39GJb7pUPPSq9dg01o-WA7LiAVvdhNFdmahWIU/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver matriz editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
                                             <a href="https://drive.google.com/file/d/1h3mhS9T9PhwNl0OZzD5ELmsdDY1xw1dr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver diseño funcional"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_CONTROL</span></a>
@@ -653,12 +653,12 @@
                                             <mark role="status" class="badge badge-doc">Tarea</mark>
                                             <img src="img/es_2.png" alt="Documento base de trabajo o tarea sumativa" class="w-full h-full object-cover object-top">
                                         </figure>
-                                        <div class="p-5">
+                                        <div class="p-5 sm:p-6">
                                             <data value="U1-16" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 16</data>
                                             <h3 class="font-bold text-slate-800 text-base">Tipo trabajo (tarea)</h3>
                                         </div>
                                     </div>
-                                    <div class="p-5 pt-0 space-y-3">
+                                    <div class="p-5 sm:p-6 pt-0 space-y-3">
                                         <nav aria-label="Recursos principales de Tarea sumativa" class="grid grid-cols-2 gap-2">
                                             <a href="https://docs.google.com/document/d/1MKT6t-iCd-8x9mo_NqcFudxNtIyttc_6HfSf8CHkuNM/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver formato editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_SUMATIV</span></a>
                                             <a href="https://drive.google.com/file/d/1hrtkB2IN6CPiHoKT6_ZgZQCe8bIuHEiA/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver formato visual"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_SUMATIV</span></a>
@@ -678,12 +678,12 @@
                                             <mark role="status" class="badge badge-doc">Foro</mark>
                                             <img src="img/es_3.png" alt="Documento para la co-evaluación sumativa" class="w-full h-full object-cover object-top">
                                         </figure>
-                                        <div class="p-5">
+                                        <div class="p-5 sm:p-6">
                                             <data value="U1-17" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 17</data>
                                             <h3 class="font-bold text-slate-800 text-base">Co-evaluación (foro)</h3>
                                         </div>
                                     </div>
-                                    <div class="p-5 pt-0 space-y-3">
+                                    <div class="p-5 sm:p-6 pt-0 space-y-3">
                                         <nav aria-label="Recursos principales de Co-evaluación sumativa" class="grid grid-cols-2 gap-2">
                                             <a href="https://drive.google.com/file/d/18-S7t3BELP5wBXcvqPsDMEV09MpnWJ7t/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-amarillo text-davda-amarillo hover:bg-davda-amarillo/10" title="Ver documento editable"><i class="fas fa-edit text-sm" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
                                             <a href="https://docs.google.com/spreadsheets/d/1FR6cwAfZknvK6brN91CQMUmy1jX2k_4WQmeL_fFstVw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-action-stack border-davda-magenta text-davda-magenta hover:bg-davda-magenta/10" title="Ver documento final"><i class="fas fa-eye text-sm" aria-hidden="true"></i><span>EJ_COEVALU</span></a>
@@ -700,18 +700,18 @@
 
                         <!-- SECCIÓN 07: INSTRUMENTOS DE CALIFICACIÓN -->
                         <section id="instrumentos-calificacion" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-star" aria-hidden="true"></i> 07 Instrumentos de calificación</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-star" aria-hidden="true"></i> 07 Instrumentos de calificación</h2>
                                 <button onclick="copySectionLink('instrumentos-calificacion')" class="btn-share-section" aria-label="Copiar enlace de Instrumentos de calificación"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                                 
                                 <article class="bg-white rounded-xl border border-slate-200 overflow-hidden card-asset transition-all flex flex-col sm:flex-row items-stretch" data-category="documento" data-title="Rúbrica CODIGO_RUBRICA_UX RUBRICA_TR">
                                     <figure class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden m-0" id="img-herramienta-rubrica">
                                         <mark role="status" class="badge badge-doc">Documento</mark>
                                         <img src="img/ic_1.png" alt="Documento de matriz de rúbrica" class="w-full h-full object-cover object-top">
                                     </figure>
-                                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                                         <div>
                                             <data value="U1-18" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 18</data>
                                             <h3 class="font-bold text-davda-dark text-base tracking-tight">Rúbrica</h3>
@@ -735,7 +735,7 @@
                                         <mark role="status" class="badge badge-doc">Documento</mark>
                                         <img src="img/ic_2.png" alt="Documento de matriz de escala de apreciación" class="w-full h-full object-cover object-top">
                                     </figure>
-                                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                                         <div>
                                             <data value="U1-19" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 19</data>
                                             <h3 class="font-bold text-davda-dark text-base tracking-tight">Escala de apreciación</h3>
@@ -758,18 +758,18 @@
 
                         <!-- SECCIÓN 08: UNIDAD DE CIERRE -->
                         <section id="unidad-cierre" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-graduation-cap" aria-hidden="true"></i> 08 Unidad X* = Cierre</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-graduation-cap" aria-hidden="true"></i> 08 Unidad X* = Cierre</h2>
                                 <button onclick="copySectionLink('unidad-cierre')" class="btn-share-section" aria-label="Copiar enlace de Unidad Cierre"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                                 
                                 <article class="card-asset rounded-xl border border-slate-200 overflow-hidden flex flex-col sm:flex-row items-stretch" data-category="cuestionario" data-title="Examen final CODIGO_FINAL_UX EVALUACIONFINAL_TR Tarea">
                                     <figure class="bg-slate-50 w-full sm:w-64 md:w-72 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center border-b sm:border-b-0 sm:border-r border-slate-100 shrink-0 relative overflow-hidden m-0" id="img-cierre-examenfinal">
                                         <mark role="status" class="badge badge-doc">Tarea</mark>
                                         <img src="img/uef.png" alt="Documento base de examen final" class="w-full h-full object-cover object-top">
                                     </figure>
-                                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                                         <div>
                                             <data value="U1-20" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 20</data>
                                             <h3 class="font-bold text-davda-dark text-base tracking-tight">Examen final**</h3>
@@ -793,7 +793,7 @@
                                         <mark role="status" class="badge badge-doc">Tarea</mark>
                                         <img src="img/uer.png" alt="Documento base para examen de repetición" class="w-full h-full object-cover object-top">
                                     </figure>
-                                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                                         <div>
                                             <data value="U1-21" class="text-[9px] font-bold text-gray-400 block mb-1">U1 • Item 21</data>
                                             <h3 class="font-bold text-davda-dark text-base tracking-tight">Examen de repetición**</h3>
@@ -820,12 +820,12 @@
 
                         <!-- SECCIÓN 09: CONFIGURACIONES GENERALES -->
                         <section id="configuraciones-generales" class="scroll-mt-6">
-                            <div class="bg-davda-dark text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-sliders-h" aria-hidden="true"></i> 09 Configuraciones generales</h2>
+                            <div class="bg-davda-dark text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-sliders-h" aria-hidden="true"></i> 09 Configuraciones generales</h2>
                                 <button onclick="copySectionLink('configuraciones-generales')" class="btn-share-section" aria-label="Copiar enlace de Configuraciones generales"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <article class="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs hover:border-davda-primary transition-all card-asset" data-category="video" data-title="Fechas Moodle Plazos" id="img-config-fechas">
+                                <article class="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs hover:border-davda-primary transition-all card-asset" data-category="video" data-title="Fechas Moodle Plazos" id="img-config-fechas">
                                     <div class="flex items-start gap-4">
                                         <div class="bg-davda-primary/10 text-davda-primary p-3 rounded-xl font-bold text-base shrink-0"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
                                         <div>
@@ -836,7 +836,7 @@
                                     <a href="https://www.youtube.com/watch?v=B93Tztf4beE" target="_blank" rel="noopener noreferrer" class="btn-moodle-tutorial sm:w-44 py-3 font-bold uppercase shrink-0"><i class="fas fa-video mr-1.5" aria-hidden="true"></i> Videotutorial</a>
                                 </article>
 
-                                <article class="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs hover:border-davda-primary transition-all card-asset" data-category="video" data-title="Cuaderno de calificaciones Moodle" id="img-config-calificaciones">
+                                <article class="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xs hover:border-davda-primary transition-all card-asset" data-category="video" data-title="Cuaderno de calificaciones Moodle" id="img-config-calificaciones">
                                     <div class="flex items-start gap-4">
                                         <div class="bg-davda-amarillo/10 text-davda-amarillo p-3 rounded-xl font-bold text-base shrink-0"><i class="fas fa-calculator" aria-hidden="true"></i></div>
                                         <div>
@@ -851,12 +851,12 @@
 
                         <!-- SECCIÓN 10: MANUALES INSTITUCIONALES -->
                         <section id="manuales" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-book-open" aria-hidden="true"></i> Manuales</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-book-open" aria-hidden="true"></i> Manuales</h2>
                                 <button onclick="copySectionLink('manuales')" class="btn-share-section" aria-label="Copiar enlace de Manuales"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Guía sobre Norma APA 7a edición" id="card-manual-estilo">
+                                <article class="card-asset p-5 sm:p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Guía sobre Norma APA 7a edición" id="card-manual-estilo">
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between">
                                             <span class="text-[10px] font-bold text-davda-amarillo uppercase tracking-widest">Recurso de apoyo</span>
@@ -868,7 +868,7 @@
                                     <a href="https://www.uniacc.cl/biblioteca/normas-apa/" target="_blank" rel="noopener noreferrer" class="mt-6 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
                                 </article>
                                 
-                                <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Uso de IA Inteligencia artificial" id="card-manual-ia">
+                                <article class="card-asset p-5 sm:p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Uso de IA Inteligencia artificial" id="card-manual-ia">
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between">
                                             <span class="text-[10px] font-bold text-davda-magenta uppercase tracking-widest">Recurso de apoyo</span>
@@ -880,7 +880,7 @@
                                     <a href="https://www.uniacc.cl/wp-content/uploads/2026/04/inteligencias_artificiales.pdf" target="_blank" rel="noopener noreferrer" class="mt-6 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
                                 </article>
                                 
-                                <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Redacción básica gramatica ortografia" id="card-manual-redaccion">
+                                <article class="card-asset p-5 sm:p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Redacción básica gramatica ortografia" id="card-manual-redaccion">
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between">
                                             <span class="text-[10px] font-bold text-davda-primary uppercase tracking-widest">Recurso de apoyo</span>
@@ -892,7 +892,7 @@
                                     <a href="https://docs.google.com/document/d/1SCZydEDFVMTQH4XZcW818yTMnVHYy2PbiPPPiQwwjQ0/edit?pli=1&tab=t.0#heading=h.zb1n2l5bzl4f" target="_blank" rel="noopener noreferrer" class="mt-6 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
                                 </article>
                                 
-                                <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Guía sobre texto alternativo accesibilidad alt" id="card-manual-textoalt">
+                                <article class="card-asset p-5 sm:p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Guía sobre texto alternativo accesibilidad alt" id="card-manual-textoalt">
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between">
                                             <span class="text-[10px] font-bold text-davda-magenta uppercase tracking-widest">Recurso de apoyo</span>
@@ -904,7 +904,7 @@
                                     <a href="https://drive.google.com/file/d/1L3vGECqjhx8R6950jHqa3yBkmYxKSBxK/view" target="_blank" rel="noopener noreferrer" class="mt-6 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
                                 </article>
                                 
-                                <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Guía del estudiante sobre IA Inteligencia artificial alumnado" id="card-manual-estudianteia">
+                                <article class="card-asset p-5 sm:p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Guía del estudiante sobre IA Inteligencia artificial alumnado" id="card-manual-estudianteia">
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between">
                                             <span class="text-[10px] font-bold text-davda-primary uppercase tracking-widest">Recurso de apoyo</span>
@@ -916,7 +916,7 @@
                                     <a href="https://drive.google.com/file/d/1mEI4-sduwLgb9jY1dziIjyIrVl8tJiIJ/view" target="_blank" rel="noopener noreferrer" class="mt-6 btn-action-primary"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir lineamiento</a>
                                 </article>
                                 
-                                <article class="card-asset p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Manual de lenguaje libre de sesgos inclusion inclusivo" id="card-manual-sesgos">
+                                <article class="card-asset p-5 sm:p-6 flex flex-col justify-between shadow-2xs" data-category="documento" data-title="Manual de lenguaje libre de sesgos inclusion inclusivo" id="card-manual-sesgos">
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between">
                                             <span class="text-[10px] font-bold text-davda-amarillo uppercase tracking-widest">Recurso de apoyo</span>
@@ -932,8 +932,8 @@
 
                         <!-- SECCIÓN 11: MULTIMEDIA TOOLBOX -->
                         <section id="multimedia-toolbox" class="scroll-mt-6">
-                            <div class="bg-davda-primary text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-tools" aria-hidden="true"></i> Multimedia Toolbox</h2>
+                            <div class="bg-davda-primary text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-tools" aria-hidden="true"></i> Multimedia Toolbox</h2>
                                 <button onclick="copySectionLink('multimedia-toolbox')" class="btn-share-section" aria-label="Copiar enlace de Multimedia Toolbox"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1003,11 +1003,11 @@
 
                         <!-- RECURSOS GRÁFICOS MULTIMEDIA -->
                         <section id="recursos-graficos" class="scroll-mt-6">
-                            <div class="bg-davda-dark text-white px-6 py-4 rounded-xl flex items-center justify-between shadow-sm mb-8">
-                                <h2 class="text-sm font-bold flex items-center gap-2"><i class="fas fa-photo-video" aria-hidden="true"></i> Recursos gráficos</h2>
+                            <div class="bg-davda-dark text-white px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl flex flex-wrap items-center justify-between gap-2 shadow-sm mb-6 sm:mb-8">
+                                <h2 class="text-xs sm:text-sm font-bold flex items-center gap-2"><i class="fas fa-photo-video" aria-hidden="true"></i> Recursos gráficos</h2>
                                 <button onclick="copySectionLink('recursos-graficos')" class="btn-share-section" aria-label="Copiar enlace de Recursos gráficos"><i class="fas fa-link" aria-hidden="true"></i> Compartir sección</button>
                             </div>
-                            <article class="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 card-asset transition-all" data-category="interactivo" data-title="Repositorio de recursos gráficos multimedia vectores iconos tipografias" id="img-repositorio-multimedia">
+                            <article class="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 card-asset transition-all" data-category="interactivo" data-title="Repositorio de recursos gráficos multimedia vectores iconos tipografias" id="img-repositorio-multimedia">
                                 <div class="flex items-start gap-4">
                                     <div class="bg-davda-primary/10 text-davda-primary p-3 rounded-xl text-xl font-bold shrink-0"><i class="fas fa-paint-brush" aria-hidden="true"></i></div>
                                     <div>
@@ -1024,23 +1024,23 @@
             </div>
 
             <!-- VISTA 2: PROCESO DE DISEÑO TECNOPEDAGÓGICO (SPA) -->
-            <div id="viewProcesoDiseno" class="hidden flex-1 overflow-y-auto custom-scrollbar p-6 md:p-10 scroll-smooth">
+            <div id="viewProcesoDiseno" class="hidden flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6 md:p-10 scroll-smooth">
                 <div class="max-w-7xl mx-auto h-full flex flex-col space-y-4">
-                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs p-6 flex flex-col flex-1 min-h-[550px]">
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs p-4 sm:p-6 flex flex-col flex-1 min-h-[500px] sm:min-h-[550px]">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                             <div class="flex items-center gap-3">
-                                <div class="bg-davda-primary/10 text-davda-primary p-3 rounded-xl text-lg font-bold"><i class="fas fa-sitemap" aria-hidden="true"></i></div>
+                                <div class="bg-davda-primary/10 text-davda-primary p-3 rounded-xl text-lg font-bold shrink-0"><i class="fas fa-sitemap" aria-hidden="true"></i></div>
                                 <div>
-                                    <h2 class="font-bold text-davda-dark text-base">Flujo y etapas del Proceso de Diseño Tecnopedagógico</h2>
+                                    <h2 class="font-bold text-davda-dark text-sm sm:text-base">Flujo y etapas del Proceso de Diseño Tecnopedagógico</h2>
                                     <p class="text-xs text-gray-500">Haz clic e interactúa con cada fase del modelo instruccional</p>
                                 </div>
                             </div>
-                            <a href="https://view.genially.com/6939d6e2a029efa1049e6767" target="_blank" rel="noopener noreferrer" class="btn-action-primary max-w-xs px-4">
+                            <a href="https://view.genially.com/6939d6e2a029efa1049e6767" target="_blank" rel="noopener noreferrer" class="btn-action-primary w-full sm:max-w-xs px-4">
                                 <i class="fas fa-expand" aria-hidden="true"></i> Ver en pantalla completa
                             </a>
                         </div>
                         
-                        <div class="flex-1 w-full bg-slate-50 border border-slate-200 rounded-xl overflow-hidden min-h-[460px]">
+                        <div class="flex-1 w-full bg-slate-50 border border-slate-200 rounded-xl overflow-hidden min-h-[380px] sm:min-h-[460px]">
                             <iframe src="https://view.genially.com/6939d6e2a029efa1049e6767" class="w-full h-full border-0" allow="fullscreen" title="Proceso de Diseño Tecnopedagógico"></iframe>
                         </div>
                     </div>
@@ -1048,11 +1048,11 @@
             </div>
 
             <!-- VISTA 3: CONOCE EL AULA VIRTUAL (SPA - Visor PDF y análisis estructural del e-campus) -->
-            <div id="viewConoceAula" class="hidden flex-1 overflow-y-auto custom-scrollbar p-6 md:p-10 scroll-smooth">
-                <div class="max-w-7xl mx-auto space-y-8">
+            <div id="viewConoceAula" class="hidden flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6 md:p-10 scroll-smooth">
+                <div class="max-w-7xl mx-auto space-y-6 sm:space-y-8">
                     
                     <!-- Cabecera Informativa y Botón de Apertura Rápida -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
                             <div class="bg-davda-primary/10 text-davda-primary w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0">
                                 <i class="fas fa-laptop-code" aria-hidden="true"></i>
@@ -1063,7 +1063,7 @@
                                 <p class="text-xs text-gray-500 mt-0.5">Visualiza la progresión de semanas, módulos instruccionales y normativas gráficas del aula oficial.</p>
                             </div>
                         </div>
-                        <a href="img/aula_virtual.pdf" target="_blank" rel="noopener noreferrer" class="btn-action-primary sm:w-56 py-3 shrink-0">
+                        <a href="img/aula_virtual.pdf" target="_blank" rel="noopener noreferrer" class="btn-action-primary w-full sm:w-56 py-3 shrink-0">
                             <i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir PDF en pestaña nueva
                         </a>
                     </div>
@@ -1095,18 +1095,18 @@
                         </article>
                     </div>
 
-                    <!-- VISOR PDF ALTA RESOLUCIÓN -->
-                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm p-4 md:p-6">
-                        <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                    <!-- VISOR PDF ALTA RESOLUCIÓN RESPONSIVO -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm p-3 sm:p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b border-slate-100">
                             <span class="text-xs font-bold text-davda-dark flex items-center gap-2">
                                 <i class="fas fa-file-pdf text-red-500 text-base" aria-hidden="true"></i> Documento institucional: aula_virtual.pdf
                             </span>
                             <span class="text-[10px] font-bold text-gray-400 uppercase">Vista previa integrada (4 Páginas)</span>
                         </div>
-                        <div class="w-full bg-slate-100 border border-slate-200 rounded-xl overflow-hidden min-h-[850px] flex items-center justify-center">
-                            <object data="img/aula_virtual.pdf#toolbar=1&navpanes=1&scrollbar=1&view=FitH" type="application/pdf" class="w-full h-[880px]">
-                                <iframe src="img/aula_virtual.pdf" class="w-full h-[880px] border-0" title="Previsualización de Aula Virtual">
-                                    <div class="p-8 text-center bg-white m-6 rounded-xl border border-slate-200">
+                        <div class="w-full bg-slate-100 border border-slate-200 rounded-xl overflow-hidden h-[500px] sm:h-[700px] md:h-[880px] flex items-center justify-center">
+                            <object data="img/aula_virtual.pdf#toolbar=1&navpanes=1&scrollbar=1&view=FitH" type="application/pdf" class="w-full h-full">
+                                <iframe src="img/aula_virtual.pdf" class="w-full h-full border-0" title="Previsualización de Aula Virtual">
+                                    <div class="p-6 sm:p-8 text-center bg-white m-4 sm:m-6 rounded-xl border border-slate-200">
                                         <p class="text-sm font-bold text-davda-dark mb-2">Tu navegador no soporta la visualización incrustada de archivos PDF.</p>
                                         <a href="img/aula_virtual.pdf" target="_blank" class="btn-action-primary max-w-xs mx-auto mt-4">Descargar o abrir el archivo PDF</a>
                                     </div>
@@ -1119,8 +1119,8 @@
             </div>
 
             <!-- FOOTER COMÚN (Correo de Noemi en negrita font-bold y azul #2c66ff) -->
-            <footer class="border-t border-gray-200 py-4 px-6 md:px-12 bg-white z-10 shrink-0 text-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-                <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-500 text-[11px] footer-text">
+            <footer class="border-t border-gray-200 py-4 px-4 sm:px-6 md:px-12 bg-white z-10 shrink-0 text-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+                <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-gray-500 text-[11px] footer-text">
                     <p>&copy; 2026 DAVDA. Todos los derechos reservados.</p>
                     <p>
                         Dudas o sugerencias: contactar a la Coordinadora de Diseño Tecno Pedagógico, 
@@ -1132,8 +1132,8 @@
         </main>
     </div>
 
-    <!-- PANEL DESLIZANTE DE REGISTRO DE CAMBIOS (Changelog Drawer - Encabezado en gris oscuro y texto BOLD) -->
-    <aside id="changelogDrawer" class="fixed top-0 right-0 h-full w-80 sm:w-96 bg-[#f5f5f5] shadow-2xl z-50 flex flex-col transition-transform duration-300 translate-x-full border-l border-gray-200 text-[#3d3838]" aria-label="Registro de Cambios">
+    <!-- PANEL DESLIZANTE DE REGISTRO DE CAMBIOS (Changelog Drawer - Responsivo en móviles) -->
+    <aside id="changelogDrawer" class="fixed top-0 right-0 h-full w-full sm:w-80 md:w-96 max-w-full bg-[#f5f5f5] shadow-2xl z-50 flex flex-col transition-transform duration-300 translate-x-full border-l border-gray-200 text-[#3d3838]" aria-label="Registro de Cambios">
         <div class="p-6 bg-[#e5e7eb] text-[#3d3838] flex items-center justify-between border-b border-gray-300 shrink-0">
             <div>
                 <h2 class="text-sm font-black uppercase tracking-wider flex items-center gap-2"><i class="fas fa-history text-davda-primary" aria-hidden="true"></i> NOVEDADES Y CAMBIOS</h2>

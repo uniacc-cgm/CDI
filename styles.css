@@ -270,15 +270,16 @@ body {
 }
 
 @media (max-width: 1024px) {
+    /* CORRECCIÓN: Sidebar en position fixed sobre toda la pantalla al abrir en móviles */
     #mainSidebar { 
-        position: absolute; 
+        position: fixed; 
         left: -100%; 
         top: 0; 
         bottom: 0; 
         width: 280px; 
         z-index: 1000; 
         transition: left 0.3s ease; 
-        height: 100vh; 
+        height: 100% !important; 
     }
     #mainSidebar.active { left: 0; }
     .sidebar-overlay { 
@@ -290,4 +291,30 @@ body {
         display: none; 
     }
     .sidebar-overlay.active { display: block; }
+}
+
+/* Ajustes de ergonomía táctil en smartphones (< 640px) */
+@media (max-width: 640px) {
+    .btn-action-primary, .btn-action-dark {
+        font-size: 10.5px;
+        padding: 9px 8px;
+    }
+    .btn-action-stack {
+        font-size: 11px;
+        padding: 10px 6px;
+    }
+    .btn-moodle-tutorial {
+        font-size: 11px;
+        padding: 9px 8px;
+    }
+    .card-asset {
+        border-radius: 10px;
+    }
+    .toast {
+        bottom: 20px;
+        width: 88%;
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 12px;
+    }
 }
